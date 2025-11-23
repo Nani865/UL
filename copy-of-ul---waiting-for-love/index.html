@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#fff1f2" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="UL" />
+    
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png" />
+
+    <title>UL - Created By Uday</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Libraries for Export Feature -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <script>
+      // Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js')
+            .then(reg => console.log('SW registered'))
+            .catch(err => console.log('SW registration failed', err));
+        });
+      }
+
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Verdana', 'sans-serif'],
+              serif: ['Verdana', 'sans-serif'], 
+            },
+            colors: {
+              rose: {
+                50: '#fff1f2',
+                100: '#ffe4e6',
+                200: '#fecdd3',
+                300: '#fda4af',
+                400: '#fb7185',
+                500: '#f43f5e',
+                600: '#e11d48',
+                700: '#be123c',
+                800: '#9f1239',
+                900: '#881337',
+              },
+            },
+            animation: {
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #fff1f2;
+        background-image: radial-gradient(at 0% 0%, hsla(355, 100%, 93%, 1) 0, transparent 50%), 
+                          radial-gradient(at 100% 100%, hsla(340, 100%, 94%, 1) 0, transparent 50%),
+                          radial-gradient(at 50% 50%, hsla(22, 100%, 96%, 1) 0, transparent 50%);
+        min-height: 100vh;
+        font-family: 'Verdana', sans-serif;
+        /* Prevent pull-to-refresh on mobile to feel more like an app */
+        overscroll-behavior-y: none;
+      }
+      /* Custom scrollbar for textareas */
+      textarea::-webkit-scrollbar {
+        width: 6px;
+      }
+      textarea::-webkit-scrollbar-thumb {
+        background-color: #fda4af;
+        border-radius: 10px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
